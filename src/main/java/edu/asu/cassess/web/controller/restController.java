@@ -104,6 +104,7 @@ public class restController {
     */
 
     //New CoursePackage REST API Operations
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/coursePackage", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public
@@ -126,19 +127,14 @@ public class restController {
             projects.updateProjects(coursePackage.getCourse());
             members.updateMembership(coursePackage.getCourse());
             consumeUsers.updateSlackUsers(coursePackage.getCourse());
-            new Thread(() -> {
-                taskController.SlackMessages();
-            }).start();
-            new Thread(() -> {
-                taskController.TaigaTasks();
-            }).start();
-            new Thread(() -> {
-                taskController.GitHubCommits();
-            }).start();
+            new Thread(() -> taskController.SlackMessages()).start();
+            new Thread(() -> taskController.TaigaTasks()).start();
+            new Thread(() -> taskController.GitHubCommits()).start();
             return object;
         }
     }
 
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/coursePackage", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public
@@ -160,6 +156,7 @@ public class restController {
 
 
     //New Student REST API Operations
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/student", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     public
@@ -180,7 +177,7 @@ public class restController {
         }
     }
 
-
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/student", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public
@@ -202,6 +199,7 @@ public class restController {
         }
     }
 
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/list/student", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public
@@ -213,6 +211,7 @@ public class restController {
     }
 
     //New Course REST API Operations
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/course", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     public
@@ -238,6 +237,7 @@ public class restController {
         return object;
     }
 
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/course", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public
@@ -256,6 +256,7 @@ public class restController {
         }
     }
 
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/list/course", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public
@@ -268,6 +269,7 @@ public class restController {
     }
 
     //New Slack Channel REST API Operations
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/slack_channel", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     public
@@ -283,6 +285,7 @@ public class restController {
         }
     }
 
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/slack_channel", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public
@@ -297,6 +300,7 @@ public class restController {
         }
     }
 
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/list/slack_channel", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public
@@ -312,6 +316,7 @@ public class restController {
         }
     }
 
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/list/slack_channel", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public
@@ -322,6 +327,7 @@ public class restController {
     }
 
     //New Admin REST API Operations
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/admin", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     public
@@ -340,6 +346,7 @@ public class restController {
         }
     }
 
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/admin", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public
@@ -358,6 +365,7 @@ public class restController {
         }
     }
 
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/list/admin", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public
@@ -378,6 +386,7 @@ public class restController {
         }
     }
 
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/list/admin", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public
@@ -412,6 +421,7 @@ public class restController {
         }
     }
 
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/team", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public
@@ -431,6 +441,7 @@ public class restController {
         }
     }
 
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/list/team", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public
@@ -452,6 +463,7 @@ public class restController {
         }
     }
 
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/list/team", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public
